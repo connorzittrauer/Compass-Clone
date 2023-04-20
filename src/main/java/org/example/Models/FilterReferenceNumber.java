@@ -12,7 +12,7 @@ package org.example.Models;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class SortByReferenceNumber implements ISortable{
+public class FilterReferenceNumber implements ICourseManager {
 
     @Override
     public void sort(ArrayList<Course> courseList) {
@@ -20,5 +20,10 @@ public class SortByReferenceNumber implements ISortable{
         for (Course course : courseList) {
             System.out.println(course);
         }
+    }
+
+    @Override
+    public ArrayList<Course> search(String query) {
+        return null;
     }
 }

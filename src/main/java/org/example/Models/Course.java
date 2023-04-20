@@ -9,17 +9,18 @@
  */
 package org.example.Models;
 
-import java.util.ArrayList;
-import org.example.Helpers.CourseGenerator;
+
 public class Course {
     private String name, courseID, session;
     private int referenceNum;
+    private double price;
 
-    public Course(String name, String courseID, String session, int referenceNum) {
+    public Course(String name, String courseID, String session, int referenceNum, double price) {
         this.name = name;
         this.courseID = courseID;
         this.session = session;
         this.referenceNum = referenceNum;
+        this.price = price;
     }
 
     public String getCourseName() {
@@ -38,12 +39,15 @@ public class Course {
         return this.referenceNum;
     }
 
+    public double getPrice() {
+        return this.price;
+    }
 
 
 
     @Override
     public String toString() {
         return "Course Name: " + name + "\nCourse ID: " + courseID +
-                "\nSession NO. " + session + "\nReference NO " + referenceNum + "\n";
+                "\nSession NO. " + session + "\nReference NO " + referenceNum + "\n" + "Price: $" + price + "\n";
     }
 }

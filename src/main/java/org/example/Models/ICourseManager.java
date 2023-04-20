@@ -11,6 +11,8 @@ package org.example.Models;
 
 import java.util.ArrayList;
 
-public interface ISortable {
+public interface ICourseManager {
     void sort(ArrayList<Course> courses);
+
+    ArrayList<Course> search(String query);
 }

@@ -20,7 +20,7 @@ public class UserGenerator {
     private UserGenerator()
         {
             userList = new ArrayList<>();
-            userList.add(new User("A1400", "1234", "Doe", "John"));
+            userList.add(new User("", "", "Doe", "John"));
             userList.add(new User("B1400", "5678", "Smith", "Jane"));
             userList.add(new User("C1400", "9012", "Johnson", "Michael"));
             userList.add(new User("D1400", "3456", "Davis", "Emily"));
