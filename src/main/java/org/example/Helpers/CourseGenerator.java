@@ -49,9 +49,6 @@ public class CourseGenerator {
         courseList.add(new Course("Introduction to Theater", "THEA 101", "1A", "573468", 850.0));
         courseList.add(new Course("Acting", "THEA 202", "1B", "684579", 900.0));
         courseList.add(new Course("Introduction to Art", "ARTS 101", "2A", "795680", 800.0));
-
-
-
     }
     public static CourseGenerator getInstance() {
         if (instance == null) {

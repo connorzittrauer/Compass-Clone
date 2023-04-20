@@ -8,14 +8,17 @@ import org.example.Models.*;
 import java.util.ArrayList;
 
 public class Driver {
+
     public static void main(String[] args) {
-
         String input = "";
-
-        System.out.println("Welcome to the compass management system");
         ArrayList<Course> courseList = CourseGenerator.getInstance().generateCourses();
-        ICourseManager managerID = new FilterCourseID();
-        ICourseManager mananagerRef = new FilterReferenceNumber();
+        ICourseManager<ArrayList<Course>> managerID = new FilterCourseID();
+        ICourseManager<Course> mananagerRef = new FilterReferenceNumber();
+
+        Cart cart = new Cart();
+
+        System.out.println("Welcome to the compass management system \n");
+
 
         Terminal.authenticate();
 
@@ -29,44 +32,36 @@ public class Driver {
             System.out.println("1. View all Courses");
             System.out.println("2. Search by ID");
             System.out.println("3. Search by reference number");
+            System.out.println("4. Add course to cart");
+            System.out.println("5. View Cart");
             input = Terminal.getInput();
             switch (input) {
-                case "1":
+                case "1" -> {
                     //View all courses
                     if (input.equalsIgnoreCase("1")) {
                         managerID.sort(courseList);
                     }
-                    break;
-                case "2":
+                }
+                case "2" -> {
                     System.out.println("Search by course ID Example: 'CHEM'");
                     input = Terminal.getInput();
                     managerID.search(input);
-                    break;
-                    //Ability to add course to cart
-                case "3":
+                }
+                case "3" -> {
                     System.out.println("Enter reference number");
                     input = Terminal.getInput();
                     mananagerRef.search(input);
-                    break;
+                }
+                case "4" -> {
+                    System.out.println("Enter reference number to add item to cart.");
+                    input = Terminal.getInput();
+                    Course item = mananagerRef.search(input);
+                    cart.addItem(item);
+                }
+                case "5" -> cart.viewItems();
             }
 
         }
-        System.out.println("");
-
-
-
-
-//        //Sort by course name
-//
-//        ISortable sortByName = new SortByCourseName();
-//        sortByName.sort(courseList);
-//
-//        //Sort by reference number
-//        ISortable sortByReferenceNumber = new SortByReferenceNumber();
-//        sortByReferenceNumber.sort(courseList);
-
-
-
 
     }
 }

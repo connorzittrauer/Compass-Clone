@@ -14,7 +14,7 @@ import org.example.Helpers.CourseGenerator;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class FilterCourseID implements ICourseManager {
+public class FilterCourseID implements ICourseManager<ArrayList<Course>> {
     ArrayList<Course> resultList = new ArrayList<>();
     @Override
     public void sort(ArrayList<Course> courseList) {
@@ -46,3 +46,4 @@ public class FilterCourseID implements ICourseManager {
         return resultList;
     }
 }
+

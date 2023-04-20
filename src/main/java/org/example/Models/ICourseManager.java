@@ -11,8 +11,8 @@ package org.example.Models;
 
 import java.util.ArrayList;
 
-public interface ICourseManager {
+public interface ICourseManager<T> {
     void sort(ArrayList<Course> courses);
 
-    ArrayList<Course> search(String query);
+    T search(String query);
 }
