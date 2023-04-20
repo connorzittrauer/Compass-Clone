@@ -11,13 +11,10 @@ package org.example.Models;
 
 import org.example.Helpers.CourseGenerator;
 
-import java.sql.SQLOutput;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.SortedMap;
 
-public class FilterCourseName implements ICourseManager {
+public class FilterCourseID implements ICourseManager {
     ArrayList<Course> resultList = new ArrayList<>();
     @Override
     public void sort(ArrayList<Course> courseList) {
@@ -32,13 +29,18 @@ public class FilterCourseName implements ICourseManager {
     @Override
     public ArrayList<Course> search(String query) {
         ArrayList<Course> courseList = CourseGenerator.getInstance().generateCourses();
+        boolean found = false;
 
         // Search the CourseID to see if it contains keyword like 'CHEM' or 'MATH'
         for (Course course : courseList) {
             if (course.getCourseID().contains(query)) {
                 System.out.println(course);
+                found = true;
                 resultList.add(course);
             }
+        }
+        if (!found) {
+            System.out.println("No courses found!");
         }
 
         return resultList;

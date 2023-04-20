@@ -11,11 +11,11 @@ package org.example.Models;
 
 
 public class Course {
-    private String name, courseID, session;
-    private int referenceNum;
+    private String name, courseID, session, referenceNum;
+
     private double price;
 
-    public Course(String name, String courseID, String session, int referenceNum, double price) {
+    public Course(String name, String courseID, String session, String referenceNum, double price) {
         this.name = name;
         this.courseID = courseID;
         this.session = session;
@@ -35,7 +35,7 @@ public class Course {
         return this.session;
     }
 
-    public int getCourseReferenceNum() {
+    public String getCourseReferenceNum() {
         return this.referenceNum;
     }
 

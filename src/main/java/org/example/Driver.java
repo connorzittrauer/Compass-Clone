@@ -3,11 +3,9 @@ package org.example;
 
 import org.example.Helpers.CourseGenerator;
 import org.example.Helpers.Terminal;
-import org.example.Helpers.UserGenerator;
 import org.example.Models.*;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Driver {
     public static void main(String[] args) {
@@ -16,31 +14,42 @@ public class Driver {
 
         System.out.println("Welcome to the compass management system");
         ArrayList<Course> courseList = CourseGenerator.getInstance().generateCourses();
-        ICourseManager manager = new FilterCourseName();
-
+        ICourseManager managerID = new FilterCourseID();
+        ICourseManager mananagerRef = new FilterReferenceNumber();
 
         Terminal.authenticate();
+
 
         System.out.println("-------Menu------");
         System.out.println("1. Courses");
         input = Terminal.getInput();
 
-        switch (input) {
-            case "1":
-                //View all courses
-                System.out.println("1. View all Courses");
-                System.out.println("2. Search by Reference Number");
-                input = Terminal.getInput();
-                if (input.equalsIgnoreCase("1")) {
-                    manager.sort(courseList);
-                }
-                //Search for a specific course
-                if (input.equalsIgnoreCase("2")) {
+
+        while (!input.equalsIgnoreCase("q")) {
+            System.out.println("1. View all Courses");
+            System.out.println("2. Search by ID");
+            System.out.println("3. Search by reference number");
+            input = Terminal.getInput();
+            switch (input) {
+                case "1":
+                    //View all courses
+                    if (input.equalsIgnoreCase("1")) {
+                        managerID.sort(courseList);
+                    }
+                    break;
+                case "2":
                     System.out.println("Search by course ID Example: 'CHEM'");
                     input = Terminal.getInput();
-                    manager.search(input);
-                }
-                //Ability to add course to cart
+                    managerID.search(input);
+                    break;
+                    //Ability to add course to cart
+                case "3":
+                    System.out.println("Enter reference number");
+                    input = Terminal.getInput();
+                    mananagerRef.search(input);
+                    break;
+            }
+
         }
         System.out.println("");
 

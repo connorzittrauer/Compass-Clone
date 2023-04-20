@@ -9,11 +9,13 @@
  */
 package org.example.Models;
 
+import org.example.Helpers.CourseGenerator;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 
 public class FilterReferenceNumber implements ICourseManager {
-
+    ArrayList<Course> resultList = new ArrayList<>();
     @Override
     public void sort(ArrayList<Course> courseList) {
         courseList.sort(Comparator.comparing(Course::getCourseReferenceNum));
@@ -24,6 +26,20 @@ public class FilterReferenceNumber implements ICourseManager {
 
     @Override
     public ArrayList<Course> search(String query) {
-        return null;
+        ArrayList<Course> courseList = CourseGenerator.getInstance().generateCourses();
+        boolean found = false;
+        // Search by reference number
+        for (Course course : courseList) {
+            if (course.getCourseReferenceNum().equalsIgnoreCase(query)) {
+                System.out.println(course);
+                found = true;
+                resultList.add(course);
+            }
+        }
+        if (!found) {
+            System.out.println("No courses found!");
+        }
+
+        return resultList;
     }
 }
