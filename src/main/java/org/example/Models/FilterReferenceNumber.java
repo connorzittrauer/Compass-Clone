@@ -16,31 +16,21 @@ import java.util.Comparator;
 
 public class FilterReferenceNumber implements ICourseManager<Course> {
     @Override
-    public void sort(ArrayList<Course> courseList) {
+    public ArrayList<Course> sort(ArrayList<Course> courseList) {
         courseList.sort(Comparator.comparing(Course::getCourseReferenceNum));
-        for (Course course : courseList) {
-            System.out.println(course);
-        }
+        return courseList;
     }
 
     @Override
-    public Course search(String query) {
-        ArrayList<Course> courseList = CourseGenerator.getInstance().generateCourses();
+    public Course search(String query, ArrayList<Course> courseSingleton) {
         Course course = null;
-        boolean found = false;
 
-        // Search by reference number
-        for (Course c : courseList) {
+        for (Course c : courseSingleton) {
             if (c.getCourseReferenceNum().equalsIgnoreCase(query)) {
-                System.out.println(c);
                 course = c;
-                found = true;
             }
         }
-        if (!found) {
-            System.out.println("No courses found!");
-        }
-
         return course;
     }
+
 }

@@ -15,35 +15,27 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class FilterCourseID implements ICourseManager<ArrayList<Course>> {
-    ArrayList<Course> resultList = new ArrayList<>();
+    ArrayList<Course> filteredList = new ArrayList<>();
     @Override
-    public void sort(ArrayList<Course> courseList) {
+    public ArrayList<Course> sort(ArrayList<Course> courseList) {
         //Sort by the course name algorithm
         courseList.sort(Comparator.comparing(Course::getCourseName));
-        for (Course course : courseList) {
-            System.out.println(course);
-        }
-
+        return courseList;
     }
 
     @Override
-    public ArrayList<Course> search(String query) {
-        ArrayList<Course> courseList = CourseGenerator.getInstance().generateCourses();
-        boolean found = false;
+    public ArrayList<Course> search(String query, ArrayList<Course> courseList) {
 
         // Search the CourseID to see if it contains keyword like 'CHEM' or 'MATH'
         for (Course course : courseList) {
             if (course.getCourseID().contains(query)) {
-                System.out.println(course);
-                found = true;
-                resultList.add(course);
+                filteredList.add(course);
             }
         }
-        if (!found) {
-            System.out.println("No courses found!");
-        }
 
-        return resultList;
+        return filteredList;
     }
+
 }
+
 
