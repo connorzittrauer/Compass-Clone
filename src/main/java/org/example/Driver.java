@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Driver {
 
     public static void main(String[] args) {
-        String input = "";
+        String input;
         ArrayList<Course> courseList = CourseGenerator.getInstance().generateCourses();
         ICourseManager<ArrayList<Course>> managerID = new FilterCourseID();
         ICourseManager<Course> mananagerRef = new FilterReferenceNumber();
@@ -21,49 +21,49 @@ public class Driver {
         System.out.println(courseList.get(3).getPrerequisites());
 
 
-//        System.out.println("Welcome to the compass management system \n");
-//
-//
-//        Terminal.authenticate();
-//
-//
-//        System.out.println("-------Menu------");
-//        System.out.println("1. Courses");
-//        input = Terminal.getInput();
-//
-//
-//        while (!input.equalsIgnoreCase("q")) {
-//            System.out.println("1. View all Courses");
-//            System.out.println("2. Search by ID");
-//            System.out.println("3. Search by reference number");
-//            System.out.println("4. Add course to cart");
-//            System.out.println("5. View Cart");
-//            input = Terminal.getInput();
-//            switch (input) {
-//                case "1" -> {
-//                    //View all courses
-//                    PrintUtils.print(managerID.sort(courseList));
-//                }
-//                case "2" -> {
-//                    System.out.println("Search by course ID Example: 'CHEM'");
+        System.out.println("Welcome to the compass management system \n");
+
+
+        Terminal.authenticate();
+
+
+        System.out.println("-------Menu------");
+        System.out.println("1. Courses");
+        input = Terminal.getInput();
+
+
+        while (!input.equalsIgnoreCase("q")) {
+            System.out.println("1. View all Courses");
+            System.out.println("2. Search by ID");
+            System.out.println("3. Search by reference number");
+            System.out.println("4. Add course to cart");
+            System.out.println("5. View Cart");
+            input = Terminal.getInput();
+            switch (input) {
+                case "1" -> {
+                    //View all courses
+                    PrintUtils.print(managerID.sort(courseList));
+                }
+                case "2" -> {
+                    System.out.println("Search by course ID Example: 'CHEM'");
+                    input = Terminal.getInput();
+                    PrintUtils.print(managerID.search(input, courseList));
+                }
+                case "3" -> {
+                    System.out.println("Enter reference number");
+                    input = Terminal.getInput();
+                    PrintUtils.print(mananagerRef.search(input, courseList));
+                }
+//                case "4" -> {
+//                    System.out.println("Enter reference number to add item to cart.");
 //                    input = Terminal.getInput();
-//                    PrintUtils.print(managerID.search(input, courseList));
+//                    Course item = mananagerRef.search(input, courseList);
+//                    cart.addItem(item);
 //                }
-//                case "3" -> {
-//                    System.out.println("Enter reference number");
-//                    input = Terminal.getInput();
-//                    PrintUtils.print(mananagerRef.search(input, courseList));
-//                }
-////                case "4" -> {
-////                    System.out.println("Enter reference number to add item to cart.");
-////                    input = Terminal.getInput();
-////                    Course item = mananagerRef.search(input, courseList);
-////                    cart.addItem(item);
-////                }
-//                case "5" -> cart.viewItems();
-//            }
-//
-//        }
+                case "5" -> cart.viewItems();
+            }
+
+        }
 
     }
 }

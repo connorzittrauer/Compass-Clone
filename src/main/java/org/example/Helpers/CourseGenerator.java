@@ -18,9 +18,10 @@ import java.util.ArrayList;
 public class CourseGenerator {
     private ArrayList<Course> courseList;
     private static CourseGenerator instance;
-
+    private ICourseManager<ArrayList<Course>> managerID = new FilterCourseID();
     private CourseGenerator()
     {
+
         courseList = new ArrayList<>();
         courseList.add(new Course("Introduction to Algebra", "MATH 101", "1A", "123456", 850.0));
         courseList.add(new Course("Trigonometry", "MATH 102", "1B", "234567", 900.0));
@@ -66,16 +67,9 @@ public class CourseGenerator {
 
 
     }
-    public static CourseGenerator getInstance() {
-        if (instance == null) {
-            instance = new CourseGenerator();
-        }
-        return instance;
-    }
-
     // Helper method that employ the composite pattern to add course prerequisites
     private void addCoursePrerequisite(String baseCourseID, String preRequisiteID) {
-        ICourseManager<ArrayList<Course>> managerID = new FilterCourseID();
+
 
         // Looks up the courses by ID
         ArrayList<Course> baseCourseList = managerID.search(baseCourseID, courseList);
@@ -86,6 +80,14 @@ public class CourseGenerator {
 
         baseCourse.addPrerequisite(preRequisite);
     }
+    public static CourseGenerator getInstance() {
+        if (instance == null) {
+            instance = new CourseGenerator();
+        }
+        return instance;
+    }
+
+
 
     public ArrayList<Course> generateCourses() {
         return courseList;

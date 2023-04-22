@@ -9,8 +9,6 @@
  */
 package org.example.Models;
 
-import org.example.Helpers.CourseGenerator;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 
