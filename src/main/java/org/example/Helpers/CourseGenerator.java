@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class CourseGenerator {
     private ArrayList<Course> courseList;
     private static CourseGenerator instance;
-    private ICourseManager<ArrayList<Course>> managerID = new FilterCourseID();
+
     private CourseGenerator()
     {
 
