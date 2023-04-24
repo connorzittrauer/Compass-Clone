@@ -18,8 +18,7 @@ public class Driver {
 
         Cart cart = new Cart();
 
-        System.out.println(courseList.get(2).getPrerequisites());
-        //System.out.println(managerID.search("MATH 101", courseList));
+
 
 
 
