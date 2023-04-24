@@ -14,11 +14,14 @@ public class Driver {
         String input;
         ArrayList<Course> courseList = CourseGenerator.getInstance().generateCourses();
         ICourseManager<ArrayList<Course>> managerID = new FilterCourseID();
-        ICourseManager<Course> mananagerRef = new FilterReferenceNumber();
+        ICourseManager<Course> managerRef = new FilterReferenceNumber();
 
         Cart cart = new Cart();
 
-        System.out.println(courseList.get(3).getPrerequisites());
+        System.out.println(courseList.get(2).getPrerequisites());
+        //System.out.println(managerID.search("MATH 101", courseList));
+
+
 
 
         System.out.println("Welcome to the compass management system \n");
@@ -52,12 +55,12 @@ public class Driver {
                 case "3" -> {
                     System.out.println("Enter reference number");
                     input = Terminal.getInput();
-                    PrintUtils.print(mananagerRef.search(input, courseList));
+                    PrintUtils.print(managerRef.search(input, courseList));
                 }
 //                case "4" -> {
 //                    System.out.println("Enter reference number to add item to cart.");
 //                    input = Terminal.getInput();
-//                    Course item = mananagerRef.search(input, courseList);
+//                    Course item = managerRef.search(input, courseList);
 //                    cart.addItem(item);
 //                }
                 case "5" -> cart.viewItems();

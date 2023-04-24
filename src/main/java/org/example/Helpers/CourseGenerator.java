@@ -56,30 +56,31 @@ public class CourseGenerator {
 
         addCoursePrerequisite("MATH 201", "MATH 101");
         addCoursePrerequisite("MATH 202", "MATH 201");
-        addCoursePrerequisite("MATH 301", "MATH 202");
-        addCoursePrerequisite("MATH 302", "MATH 201");
-        addCoursePrerequisite("BIOL 201", "BIOL 101");
-        addCoursePrerequisite("BIOL 202", "BIOL 201");
-        addCoursePrerequisite("BIOL 301", "BIOL 201");
-        addCoursePrerequisite("BIOL 302", "BIOL 202");
-        addCoursePrerequisite("COMP 201", "COMP 101");
-        addCoursePrerequisite("COMP 301", "COMP 201");
+//        addCoursePrerequisite("MATH 301", "MATH 202");
+//        addCoursePrerequisite("MATH 302", "MATH 201");
+//        addCoursePrerequisite("BIOL 201", "BIOL 101");
+//        addCoursePrerequisite("BIOL 202", "BIOL 201");
+//        addCoursePrerequisite("BIOL 301", "BIOL 201");
+//        addCoursePrerequisite("BIOL 302", "BIOL 202");
+//        addCoursePrerequisite("COMP 201", "COMP 101");
+//        addCoursePrerequisite("COMP 301", "COMP 201");
 
 
     }
     // Helper method that employ the composite pattern to add course prerequisites
     private void addCoursePrerequisite(String baseCourseID, String preRequisiteID) {
-
-
-        // Looks up the courses by ID
         ArrayList<Course> baseCourseList = managerID.search(baseCourseID, courseList);
-        ArrayList<Course> preRequisiteList = managerID.search(preRequisiteID, courseList);
-
         Course baseCourse = baseCourseList.get(0);
+
+        ArrayList<Course> preRequisiteList = managerID.search(preRequisiteID, courseList);
         Course preRequisite = preRequisiteList.get(0);
 
-        baseCourse.addPrerequisite(preRequisite);
+
+        if (!baseCourse.equals(preRequisite)) {
+            baseCourse.addPrerequisite(preRequisite);
+        }
     }
+
     public static CourseGenerator getInstance() {
         if (instance == null) {
             instance = new CourseGenerator();
