@@ -4,27 +4,27 @@
  *  File Name: UserGenerator.java
  */
 
-/* This class
- *
+/* This class is an implementation of the Singleton pattern.
+ * Within the constructor a list of users are hardcoded and added to an arraylist.
+ * This class is used to preload the program with some user data.
  */
 package org.example.Helpers;
 
 import org.example.Models.User;
-
 import java.util.ArrayList;
 
 public class UserGenerator {
-    private ArrayList<User> userList;
+    private final ArrayList<User> userList;
     private static UserGenerator instance;
 
     private UserGenerator()
         {
             userList = new ArrayList<>();
-            userList.add(new User("", "", "Doe", "John"));
-            userList.add(new User("B1400", "5678", "Smith", "Jane"));
-            userList.add(new User("C1400", "9012", "Johnson", "Michael"));
-            userList.add(new User("D1400", "3456", "Davis", "Emily"));
-            userList.add(new User("E1400", "7890", "Wilson", "Robert"));
+            userList.add(new User("", "", "John", "Doe"));
+            userList.add(new User("B1400", "5678", "Jane", "Smith"));
+            userList.add(new User("C1400", "9012", "Michael", "Johnson"));
+            userList.add(new User("D1400", "3456", "Emily", "Davis"));
+            userList.add(new User("E1400", "7890", "Robert", "Wilson"));
         };
 
     public static UserGenerator getInstance() {

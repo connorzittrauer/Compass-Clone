@@ -4,19 +4,24 @@
  *  File Name: Course.java
  */
 
-/* This class
- *
+/* The class represents the Course object with attributes for name,
+ * courseID, session, reference number, and price. It also maintains a list
+ * of prerequisite courses. This class provides methods for getting course
+ * attributes, managing prerequisite courses, and displaying course information
+ * in a readable format.
+ * This class implements the composite pattern for managing prerequisite courses.
  */
 package org.example.Models;
 
-
-import java.nio.charset.CoderResult;
 import java.util.ArrayList;
 
 public class Course {
-    private String name, courseID, session, referenceNum;
-    private ArrayList<Course> courses = new ArrayList<>();
-    private double price;
+    private final String name;
+    private final String courseID;
+    private final String session;
+    private final String referenceNum;
+    private final ArrayList<Course> courses = new ArrayList<>();
+    private final double price;
 
     public Course(String name, String courseID, String session, String referenceNum, double price) {
         this.name = name;
@@ -47,7 +52,7 @@ public class Course {
     }
 
     /* This is an implementation of the composite pattern */
-    public void addPrerequisite(Course course){
+    public void addPrerequisite(Course course) {
         courses.add(course);
     }
 
@@ -57,14 +62,12 @@ public class Course {
      *
      * The base case is when the courses ArrayList is empty.
      */
-    public String getPrerequisites()
-    {
+    public String getPrerequisites() {
         StringBuilder sb = new StringBuilder();
         String baseCourse = this + "\n";
         sb.append(baseCourse);
 
-        for (Course course : courses)
-        {
+        for (Course course : courses) {
             sb.append(course.getPrerequisites());
         }
         return sb.toString();

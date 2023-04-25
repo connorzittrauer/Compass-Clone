@@ -4,16 +4,19 @@
  *  File Name: User.java
  */
 
-/* This class
- *
+/* This is a basic class to represent the User object with attributes for studentID,
+ * password, first name, and last name. It provides methods for
+ * getting and setting the user attributes, as well as a toString method for
+ * displaying the user information in a readable format.
  */
 package org.example.Models;
 
-import java.util.ArrayList;
-
 public class User {
-    String studentID, password, firstName , lastName;
-    ArrayList<String> shoppingCart;
+    private final String studentID;
+    private final String password;
+    private final String firstName;
+    private final String lastName;
+
     public User(String studentID, String password, String firstName, String lastName) {
         this.studentID = studentID;
         this.password = password;
@@ -21,12 +24,8 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getStudentID() {
-        return studentID;
-    }
-    public String getPassword() {
-        return password;
-    }
+    public String getStudentID() { return studentID; }
+    public String getPassword() { return password; }
     public String getFirstName() {
         return firstName;
     }

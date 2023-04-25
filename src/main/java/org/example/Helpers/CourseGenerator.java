@@ -4,23 +4,21 @@
  *  File Name: CourseGenerator.java
  */
 
-/* This class
- *
+/*  This class is an implementation of the Singleton design pattern.
+ *  Within the constructor, a number of courses as well as
+ *  prerequisites are hard-coded.
+ *  This class is used to preload the program with some course data.
  */
 package org.example.Helpers;
 
 import org.example.Models.Course;
-import org.example.Models.FilterCourseID;
-import org.example.Models.ICourseManager;
-
 import java.util.ArrayList;
 
 public class CourseGenerator {
-    private ArrayList<Course> courseList;
     private static CourseGenerator instance;
+    private final ArrayList<Course> courseList;
 
-    private CourseGenerator()
-    {
+    private CourseGenerator() {
 
         courseList = new ArrayList<>();
         Course introAlg = new Course("Introduction to Algebra", "MATH 101", "1A", "123456", 850.0);
@@ -137,7 +135,6 @@ public class CourseGenerator {
         }
         return instance;
     }
-
 
 
     public ArrayList<Course> generateCourses() {

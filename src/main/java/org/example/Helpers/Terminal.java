@@ -4,13 +4,12 @@
  *  File Name: Terminal.java
  */
 
-/* This class
- *
+/* This class provides a terminal user interface that is used throughout
+ * the main menu loop. It also provides a method for authentication.
  */
 package org.example.Helpers;
 
 import org.example.Models.User;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,6 +20,7 @@ public class Terminal {
     // Generate Singleton Instance
     static UserGenerator generator = UserGenerator.getInstance();
     static ArrayList<User> userList = generator.generateUsers();
+
     public static String getInput() {
 
         System.out.print("> ");
@@ -28,8 +28,11 @@ public class Terminal {
         return input;
     }
 
+    /*  Method for authenticating the user. It simply puts the user in a loop
+     *  and checks strings against the user input. It loops until there is a valid
+     *  username and password. */
     public static void authenticate() {
-        while (validating){
+        while (validating) {
             System.out.println("Username: ");
             studentID = Terminal.getInput();
             System.out.println("Password: ");
@@ -37,10 +40,11 @@ public class Terminal {
 
             boolean loginSuccessful = false;
 
-            for ( User user : userList) {
-                if(studentID.equalsIgnoreCase(user.getStudentID()) && password.equalsIgnoreCase(user.getPassword())) {
+            for (User user : userList) {
+                if (studentID.equalsIgnoreCase(user.getStudentID()) && password.equalsIgnoreCase(user.getPassword())) {
                     loginSuccessful = true;
                     System.out.println("Login Successful");
+                    System.out.println("Welcome " + user.getFirstName() + " " + user.getLastName());
                     validating = false;
                 }
             }

@@ -4,16 +4,22 @@
  *  File Name: UIManager.java
  */
 
-/* This class
- *
+/* This class provides a terminal user interface for mocking the compass management system.
+ * This class manages course lists, filters, and the cart, and handles user input for
+ * viewing, searching, adding, and removing courses. It demonstrates the use
+ * of the ICourseManager interface to implement different filtering and
+ * searching strategies for course management.
  */
 package org.example;
 
 import org.example.Helpers.CourseGenerator;
 import org.example.Helpers.PrintUtils;
 import org.example.Helpers.Terminal;
-import org.example.Models.*;
-
+import org.example.Interfaces.FilterCourseID;
+import org.example.Interfaces.FilterReferenceNumber;
+import org.example.Interfaces.ICourseManager;
+import org.example.Models.Cart;
+import org.example.Models.Course;
 import java.util.ArrayList;
 
 public class UIManager {
@@ -21,13 +27,15 @@ public class UIManager {
     private final ICourseManager<ArrayList<Course>> managerID;
     private final ICourseManager<Course> managerRef;
     private final Cart cart;
-    private String input ="";
+    private String input = "";
+
     public UIManager() {
         managerRef = new FilterReferenceNumber();
         managerID = new FilterCourseID();
         courseList = CourseGenerator.getInstance().generateCourses();
         cart = new Cart();
     }
+    /* This method is the main loop that controls the entire menu system. */
     public void start() {
 
         System.out.println("Welcome to the compass management system \n");
@@ -51,7 +59,6 @@ public class UIManager {
                 case "5" -> removeFromCart();
                 case "6" -> viewCart();
             }
-
         }
     }
 
@@ -59,12 +66,16 @@ public class UIManager {
         PrintUtils.print(managerID.sort(courseList));
     }
 
-    private void searchById(){
+    private void searchById() {
         System.out.println("Search by course ID Example: 'CHEM'");
         input = Terminal.getInput();
         PrintUtils.print(managerID.search(input, courseList));
     }
 
+    /* This method uses the strategy pattern tp looks up a course by reference number
+     * and only return a single instance of the course.
+     * If an instance of the course is found, the user is prompted to view the prerequisites.
+     */
     private void searchByReferenceNumber() {
         System.out.println("Enter reference number");
         input = Terminal.getInput();
@@ -74,11 +85,10 @@ public class UIManager {
         if (courseRefLookup != null) {
             System.out.println("View Prerequisites? y/n");
             input = Terminal.getInput();
-            if (input.equalsIgnoreCase("y")){
+            if (input.equalsIgnoreCase("y")) {
                 System.out.println(courseRefLookup.getPrerequisites());
             }
         }
-
     }
 
     private void addToCart() {
@@ -88,7 +98,7 @@ public class UIManager {
         cart.addItem(item);
     }
 
-    private void removeFromCart(){
+    private void removeFromCart() {
         System.out.println("Enter reference number for the course you want to delete.");
         input = Terminal.getInput();
         Course course = managerRef.search(input, courseList);

@@ -4,23 +4,28 @@
  *  File Name: SortByCourseName.java
  */
 
-/* This class
- *
+/* This class utilizes the strategy pattern and implements the ICourseManager interface to provide methods
+ * for sorting and searching courses based on Course ID.
  */
-package org.example.Models;
+package org.example.Interfaces;
 
+import org.example.Models.Course;
 import java.util.ArrayList;
 import java.util.Comparator;
 
 public class FilterCourseID implements ICourseManager<ArrayList<Course>> {
     ArrayList<Course> filteredList = new ArrayList<>();
+
+    // This method returns an arraylist that sorts the course catalog alphabetically.
     @Override
     public ArrayList<Course> sort(ArrayList<Course> courseList) {
-        //Sort by the course name algorithm
         courseList.sort(Comparator.comparing(Course::getCourseName));
         return courseList;
     }
 
+    /* The method returns a filtered ArrayList containing the matching courses based upon
+     * the course input query.
+     */
     @Override
     public ArrayList<Course> search(String query, ArrayList<Course> courseList) {
 
@@ -30,10 +35,8 @@ public class FilterCourseID implements ICourseManager<ArrayList<Course>> {
                 filteredList.add(course);
             }
         }
-
         return filteredList;
     }
-
 }
 
 
