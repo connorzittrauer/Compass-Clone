@@ -49,6 +49,7 @@ public class UIManager {
             System.out.println("4. Add course to cart");
             System.out.println("5. Remove course from cart");
             System.out.println("6. View Cart");
+            System.out.println("7. Logout");
             input = Terminal.getInput();
 
             switch (input) {
@@ -58,6 +59,7 @@ public class UIManager {
                 case "4" -> addToCart();
                 case "5" -> removeFromCart();
                 case "6" -> viewCart();
+                case "7" -> input = "q";
             }
         }
     }
@@ -108,4 +110,6 @@ public class UIManager {
     private void viewCart() {
         cart.viewItems();
     }
+
+
 }
