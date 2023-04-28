@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class FilterCourseID implements ICourseManager<ArrayList<Course>> {
-    ArrayList<Course> filteredList = new ArrayList<>();
+    private final ArrayList<Course> filteredList = new ArrayList<>();
 
     // This method returns an arraylist that sorts the course catalog alphabetically.
     @Override

@@ -69,8 +69,8 @@ public class UIManager {
     }
 
     private void searchById() {
-        System.out.println("Search by course ID Example: 'CHEM'");
-        input = Terminal.getInput();
+        System.out.println("Search by course ID Example: 'CHEM' or 'MATH'");
+        input = Terminal.getInput().toUpperCase();
         PrintUtils.print(managerID.search(input, courseList));
     }
 

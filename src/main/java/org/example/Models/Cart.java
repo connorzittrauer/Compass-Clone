@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class Cart {
-    ArrayList<Course> cart = new ArrayList<>();
+    private final ArrayList<Course> cart = new ArrayList<>();
 
     public Cart() {}
 

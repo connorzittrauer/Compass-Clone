@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Terminal {
-    static Scanner scanner = new Scanner(System.in);
-    static String input = "", studentID, password;
-    static boolean validating = true;
+    private static Scanner scanner = new Scanner(System.in);
+    private static String input = "", studentID, password;
+    private static boolean validating = true;
     // Generate Singleton Instance
-    static UserGenerator generator = UserGenerator.getInstance();
-    static ArrayList<User> userList = generator.generateUsers();
+    private static UserGenerator generator = UserGenerator.getInstance();
+    private static ArrayList<User> userList = generator.generateUsers();
 
     public static String getInput() {
 
